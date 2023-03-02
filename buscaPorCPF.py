@@ -11,7 +11,7 @@ dotenv.load_dotenv()
 from sqlalchemy import false, true
 
 def main():
-  cpf = ['355.187.741-68']
+  cpf = ['Lista de CPFs']
   for CPF in cpf:
     pegarIdCliente = consultaClienteAPI(CPF.replace('.','').replace('-', ''))
     pegarIdContrato = filtrarContratoPorID(pegarIdCliente)
@@ -19,8 +19,8 @@ def main():
       webHookInsercao(idContrato)
 
 def consultaClienteAPI(cpf):
-  url = 'https://api.sienge.com.br/' + str(os.environ['DOMINIO_WPA']) +'/public/api/v1/customers?cpf=' + str(cpf)
-  response = requests.get(url, auth = HTTPBasicAuth(str(os.environ['USER_WPA']), str(os.environ['PASS_WPA'])))
+  url = 'https://api.sienge.com.br/' + str(os.environ['DOMINIO']) +'/public/api/v1/customers?cpf=' + str(cpf)
+  response = requests.get(url, auth = HTTPBasicAuth(str(os.environ['USER']), str(os.environ['PASS'])))
   idCliente = 0
   if response.status_code == 200:
     dados = response.json()
@@ -33,8 +33,8 @@ def consultaClienteAPI(cpf):
 
 
 def filtrarContratoPorID(idCliente):
-  url = 'https://api.sienge.com.br/' + str(os.environ['DOMINIO_WPA']) + '/public/api/v1/sales-contracts?customerId=' + str(idCliente)
-  response = requests.get(url, auth = HTTPBasicAuth(str(os.environ['USER_WPA']), str(os.environ['PASS_WPA'])))
+  url = 'https://api.sienge.com.br/' + str(os.environ['DOMINIO']) + '/public/api/v1/sales-contracts?customerId=' + str(idCliente)
+  response = requests.get(url, auth = HTTPBasicAuth(str(os.environ['USER']), str(os.environ['PASS'])))
   if response.status_code == 200:
     json = response.json()
     retornoIds = []
