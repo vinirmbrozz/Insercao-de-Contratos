@@ -11,7 +11,7 @@ dotenv.load_dotenv()
 from sqlalchemy import false, true
 
 def main():
-  cpf = ['Lista de CPFs']
+  cpf = ['Lista de CPF']
   for CPF in cpf:
     pegarIdCliente = consultaClienteAPI(CPF.replace('.','').replace('-', ''))
     pegarIdContrato = filtrarContratoPorID(pegarIdCliente)
@@ -19,7 +19,7 @@ def main():
       webHookInsercao(idContrato)
 
 def consultaClienteAPI(cpf):
-  url = 'https://api.sienge.com.br/' + str(os.environ['DOMINIO']) +'/public/api/v1/customers?cpf=' + str(cpf)
+  url = str(os.environ['URL_API']) + str(os.environ['DOMINIO']) + str(os.environ['PARAMETRO_CUSTOMERS']) + str(cpf)
   response = requests.get(url, auth = HTTPBasicAuth(str(os.environ['USER']), str(os.environ['PASS'])))
   idCliente = 0
   if response.status_code == 200:
@@ -33,7 +33,7 @@ def consultaClienteAPI(cpf):
 
 
 def filtrarContratoPorID(idCliente):
-  url = 'https://api.sienge.com.br/' + str(os.environ['DOMINIO']) + '/public/api/v1/sales-contracts?customerId=' + str(idCliente)
+  url = str(os.environ['URL_API']) + str(os.environ['DOMINIO']) + str(os.environ['PARAMETRO_SALES_CONTRACTS']) + str(idCliente)
   response = requests.get(url, auth = HTTPBasicAuth(str(os.environ['USER']), str(os.environ['PASS'])))
   if response.status_code == 200:
     json = response.json()
