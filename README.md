@@ -4,13 +4,13 @@
 
 <p align="center">Este código é um script Python que realiza uma integração com a API do sistema Sienge. O objetivo do script é consultar um cliente por CPF na API do Sienge, filtrar os contratos deste cliente e enviar uma mensagem de webhook para uma URL específica para cada contrato encontrado.</p>
 
-## 🎲 API's Consumidas no Projeto
+## 🎲 API's consumidas no Projeto
 
 - GET /customers -> Busca por CPF
 - GET /sales-contracts -> Busca de contrato através do ID do Cliente
 - POST /whcontractcancela -> Insere um contrato
 
-### 🛠 Tecnologias
+## 🛠 Tecnologias
 
 As seguintes ferramentas foram usadas na construção do projeto:
 
