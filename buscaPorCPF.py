@@ -11,8 +11,9 @@ dotenv.load_dotenv()
 from sqlalchemy import false, true
 
 def main():
-  cpf = ['Lista de CPF']
+  cpf = ['Lista de CPFs']
   for CPF in cpf:
+    print(CPF)
     pegarIdCliente = consultaClienteAPI(CPF.replace('.','').replace('-', ''))
     pegarIdContrato = filtrarContratoPorID(pegarIdCliente)
     for idContrato in pegarIdContrato:
@@ -48,11 +49,14 @@ def filtrarContratoPorID(idCliente):
     return retornoIds
       
 def webHookInsercao(idContrato):
+  print(idContrato)
   url = str(os.environ['URL_WEBHOOK'])
   payload = {'salesContractId' : idContrato}
   headers = {'Content-type': 'application/json'}
 
   response = requests.request('POST', url, json=payload, headers=headers)
+
+  print(response.content)
 
   if response.status_code == 201:
     return true
