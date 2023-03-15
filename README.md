@@ -19,5 +19,5 @@ As seguintes ferramentas foram usadas na construção do projeto:
 
 ## ➕ Sobre 
 
-<p align="left">O objetivo da criação desse script foi para automatizar uma busca manual, que ocupava tempo. Ele funciona consultando pelo CPF do cliente via API para trazer o ID do mesmo. Com o ID do cliente em mãos, conseguimos encontrar todos os contratos de vendas atrelados a ele e subí-los através do webhook para uma fila no banco de dados.</p>
+<p align="left">O objetivo da criação desse script foi para automatizar uma busca manual, que ocupava tempo. Ele funciona consultando pelo CPF/CNPJ do cliente via API para trazer o ID do mesmo ou diretamente pelo Id do cliente caso ja o tenha. Com o ID do cliente em mãos, conseguimos encontrar todos os contratos de vendas atrelados a ele e subí-los através do webhook para uma fila no banco de dados.</p>
 
