@@ -7,6 +7,7 @@
 ## 🎲 API's consumidas no Projeto
 
 - GET /customers -> Busca por CPF
+- GET /customers -> Busca por CNPJ
 - GET /sales-contracts -> Busca de contrato através do ID do Cliente
 - POST /whcontractcancela -> Insere um contrato
 
